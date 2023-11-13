@@ -9,13 +9,13 @@ class MariaDB:
         print("connect")
 
     def add(self, level):
-        sql = "insert into water_level(level) values('{0}')".format(level)
+        sql = "insert into flood(level) values('{0}')".format(level)
         self.cur.execute(sql)
         self.db.commit()
         return level
 
     def selectAll(self):
-        sql = "select * from water_level"
+        sql = "select * from flood"
         self.cur.execute(sql)
         result = self.cur.fetchall()
         return result

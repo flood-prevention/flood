@@ -27,6 +27,21 @@ def home():
     return render_template("index.html")
 
 
+@app.route('/water_level')
+def water_level():
+    return water()
+
+
+@app.route('/water_level/open')
+def open():
+    return setAngle(90)
+
+
+@app.route('/water_level/close')
+def close():
+    return setAngle(0)
+
+
 def setAngle(angle):
     duty = 2.5+10*angle/180
     print("degree : {} to {}(duty)".format(angle, duty))
