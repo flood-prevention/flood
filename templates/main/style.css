@@ -1,0 +1,34 @@
+#container {
+  display: flex;
+  align-items: center;
+}
+
+#spot {
+  display: flex;
+  width: 2.5%;
+  height: 2.5%;
+  margin: 0 0 0 5%;
+}
+#name {
+  display: flex;
+  font-family: "Pretendard-Regular";
+  font-weight: 600;
+  margin-left: 0.5%;
+  font-size: 30px;
+}
+
+#middle {
+  display: flex;
+  margin: 5% 10% 10% 10%;
+}
+
+#graph {
+  display: flex;
+  background-color: aqua;
+  width: 20%;
+  height: 50%;
+}
+
+#water-level {
+  display: flex;
+}
