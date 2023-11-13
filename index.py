@@ -29,7 +29,9 @@ def home():
 
 @app.route('/water_level')
 def water_level():
-    return water()
+    water_level = water()
+    result = store.add(water_level)
+    return result
 
 
 @app.route('/water_level/open')
