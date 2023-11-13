@@ -1,0 +1,64 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#nameBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#spot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 9%;
+  height: 10%;
+}
+#name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Pretendard-Regular";
+  font-weight: 600;
+  margin-left: 0.5%;
+  font-size: 30px;
+}
+
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+#button {
+  flex-shrink: 0;
+  background-color: #989898;
+  font-size: 20px;
+  color: white;
+  line-height: normal;
+  font-family: "Pretendard-Regular";
+  font-weight: 600;
+  width: 28%;
+  padding: 3%;
+  margin-left: 1%;
+  flex-shrink: 0;
+  border-radius: 50px;
+  border: none;
+}
+
+#button:hover {
+  background-color: #ff4949;
+}
