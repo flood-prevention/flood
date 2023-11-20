@@ -9,7 +9,7 @@ class MariaDB:
         print("connect")
 
     def add(self, level_1, level_2):
-        sql = "insert into flood(level) values('{}','{}')".format(
+        sql = "insert into flood(level_1,level_2) values('{}','{}')".format(
             level_1, level_2)
         self.cur.execute(sql)
         self.db.commit()
