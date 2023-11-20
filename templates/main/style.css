@@ -55,7 +55,6 @@
   display: flex;
   width: 10%;
   height: 10%;
-  margin: 0 0 0 5%;
 }
 
 #park {
@@ -85,6 +84,39 @@
   font-size: 17px;
 }
 
+#nover {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+#closeImg {
+  display: flex;
+  width: 10%;
+  height: 10%;
+}
+#closeText {
+  display: flex;
+  font-family: "Pretendard-Regular";
+  font-weight: 800;
+  margin-left: 0.5%;
+  font-size: 17px;
+}
+#close {
+  flex-shrink: 0;
+  background-color: #989898;
+  font-size: 15px;
+  color: white;
+  line-height: normal;
+  font-family: "Pretendard-Regular";
+  font-weight: 600;
+  width: 18%;
+  padding: 2%;
+  flex-shrink: 0;
+  border-radius: 50px;
+  border: none;
+}
+
 #buttonBox {
   display: flex;
   flex-direction: column;
@@ -106,5 +138,9 @@
 }
 
 #open:hover {
+  background-color: #ff4949;
+}
+
+#close:hover {
   background-color: #ff4949;
 }
