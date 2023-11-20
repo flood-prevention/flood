@@ -21,17 +21,17 @@ servo2 = gpio.PWM(pin2, 50)
 
 
 def water_1():
-    level_data_1 = gpio.input(pin3)
-    print(level_data_1)
+    data_1 = gpio.input(pin3)
+    print(data_1)
     time.sleep(0.5)
-    return level_data_1
+    return data_1
 
 
 def water_2():
-    level_data_2 = gpio.input(pin4)
-    print(level_data_2)
+    data_2 = gpio.input(pin4)
+    print(data_2)
     time.sleep(0.5)
-    return level_data_2
+    return data_2
 
 
 @app.route("/")
@@ -39,7 +39,7 @@ def home():
     return render_template("index.html")
 
 
-@app.route('/water_level')
+@app.route('/api/water')
 def water_level_1():
     level_1 = water_1()
     level_2 = water_2()
@@ -47,22 +47,22 @@ def water_level_1():
     return result
 
 
-@app.route('/water_level/open_1')
+@app.route('/api/water/openA')
 def open_1():
     return setAngle_1(90)
 
 
-@app.route('/water_level/close_1')
+@app.route('/api/water/closeA')
 def close_1():
     return setAngle_1(0)
 
 
-@app.route('/water_level/open_2')
+@app.route('/api/water/openB')
 def open_2():
     return setAngle_2(90)
 
 
-@app.route('/water_level/close_2')
+@app.route('/api/water/closeB')
 def close_2():
     return setAngle_2(0)
 
