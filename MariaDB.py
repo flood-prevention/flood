@@ -1,6 +1,5 @@
 import pymysql
 
-
 class MariaDB:
     def __init__(self):
         self.db = pymysql.connect(

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../static/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+      var dataFromDB1 = [];
+      var dataFromDB2 = [];
+    </script>
+
+    <script>
+      $(document).ready(function () {
+        var ctx = document.getElementById("myChart").getContext("2d");
+
+        var myChart = new Chart(ctx, {
+          type: "line",
+          data: {
+            labels: ["1", "2", "3", "4", "5"],
+            datasets: [
+              {
+                label: "sensor 1",
+                data: dataFromDB1,
+                borderColor: "#FF9CBB",
+                borderWidth: 2,
+                fill: false,
+              },
+              {
+                label: "sensor 2",
+                data: dataFromDB2,
+                borderColor: "#FF96FF",
+                borderWidth: 2,
+                fill: false,
+              },
+            ],
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+              },
+            },
+          },
+        });
+
+        setInterval(updateData, 2000);
+
+        function updateData() {
+          $.ajax({
+            type: "GET",
+            url: "/api/now",
+          })
+            .done(function (result) {
+              console.log(result);
+              dataFromDB1.push(result.level_1);
+              dataFromDB2.push(result.level_2);
+
+              if (dataFromDB1.length > 5) {
+                dataFromDB1.shift();
+              }
+
+              if (dataFromDB2.length > 5) {
+                dataFromDB2.shift();
+              }
+
+              myChart.update();
+            })
+            .fail(function (result) {
+              console.log(result);
+            });
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <div>
+      <div id="container">
+        <img src="../static/위치.png" id="spot" />
+        <p id="name">FLOOD : 홍수 예방 서비스</p>
+      </div>
+      <div id="middle">
+        <div id="chart_div">
+          <canvas id="myChart"></canvas>
+        </div>
+        <div id="water-level">
+          <div id="spotBox">
+            <div id="openBox">
+              <div id="titleBox">
+                <img src="../static/위치.png" id="spot2" />
+                <p id="park">부산소프트웨어 마이스터고 지하주차장</p>
+              </div>
+              <div id="buttonBox">
+                <div id="over">
+                  <img id="overImg" src="../static/넘침.png" />
+                  <p id="overText">물이 가득 찬 상태</p>
+                  <button id="open">문 열기</button>
+                </div>
+                <div id="nover">
+                  <img id="closeImg" src="../static/안 넘침.png" />
+                  <p id="closeText">여유 있는 상태</p>
+                  <button id="close">문 닫기</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="spotBox">
+            <div id="openBox">
+              <div id="titleBox">
+                <img src="../static/위치.png" id="spot2" />
+                <p id="park">부산광역시 종합운동장역 지하주차장</p>
+              </div>
+              <div id="buttonBox">
+                <div id="over">
+                  <img id="overImg" src="../static/넘침.png" />
+                  <p id="overText">물이 가득 찬 상태</p>
+                  <button id="open1">문 열기</button>
+                </div>
+                <div id="nover">
+                  <img id="closeImg" src="../static/안 넘침.png" />
+                  <p id="closeText">여유 있는 상태</p>
+                  <button id="close1">문 닫기</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="../../static/main.js"></script>
+</html>

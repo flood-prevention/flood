@@ -33,11 +33,19 @@ def water_2():
     time.sleep(0.5)
     return data_2
 
+@app.route('/api/now')
+def get_now():
+    level_1 = water_1()
+    level_2 = water_2()
+    return jsonify({'level_1': level_1, 'level_2': level_2})
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    return render_template("/templates/index/index.html")
 
+@app.oute("/main")
+def main():
+    return render_template("/templates/main.html")
 
 @app.route('/api/water')
 def water_level_1():
